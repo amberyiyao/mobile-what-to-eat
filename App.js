@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 
 import Home from "./src/screens/Home";
 import { theme } from "./src/constants/theme";
@@ -16,6 +16,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import AddFood from "./src/screens/AddFood";
 import List from "./src/screens/List";
+import PickFood from "./src/screens/PickFood";
 
 const HomeStack = createStackNavigator();
 function HomeStackScreen() {
@@ -29,17 +30,17 @@ function HomeStackScreen() {
   );
 }
 
-const AddStack = createStackNavigator();
-function AddStackStackScreen() {
-  return (
-    <AddStack.Navigator
-      initialRouteName="AddPage"
-      screenOptions={{ headerShown: false }}
-    >
-      <AddStack.Screen name="AddPage" component={AddFood} />
-    </AddStack.Navigator>
-  );
-}
+// const PickStack = createStackNavigator();
+// function AddStackStackScreen() {
+//   return (
+//     <AddStack.Navigator
+//       initialRouteName="AddPage"
+//       screenOptions={{ headerShown: false }}
+//     >
+//       <AddStack.Screen name="AddPage" component={AddFood} />
+//     </AddStack.Navigator>
+//   );
+// }
 
 const ListStack = createStackNavigator();
 function ListStackStackScreen() {
@@ -49,6 +50,7 @@ function ListStackStackScreen() {
       screenOptions={{ headerShown: false }}
     >
       <ListStack.Screen name="FoodList" component={List} />
+      <ListStack.Screen name="AddFood" component={AddFood} />
     </ListStack.Navigator>
   );
 }
@@ -113,8 +115,8 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="Add"
-          component={AddStackStackScreen}
+          name="Pick"
+          component={PickFood}
           options={{
             title: "",
             tabBarIcon: () => {
@@ -131,7 +133,11 @@ export default function App() {
                     borderRadius: 100,
                   }}
                 >
-                  <AntDesign name="plus" size={34} color="black" />
+                  <Ionicons
+                    name="md-fast-food-outline"
+                    size={34}
+                    color="black"
+                  />
                 </View>
               );
             },

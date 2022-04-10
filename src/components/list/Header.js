@@ -1,7 +1,10 @@
-import { Text, View } from "react-native";
-import { theme } from "../../constants/theme";
+import { Text, View, TouchableOpacity } from "react-native";
+import { fonts, theme } from "../../constants/theme";
 
-export default function Header() {
+export default function Header({ navigation }) {
+  const goToAddNew = () => {
+    navigation.navigate("AddFood");
+  };
   return (
     <View
       style={{
@@ -23,8 +26,12 @@ export default function Header() {
       <View
         style={{
           position: "absolute",
-          bottom: 15,
+          top: 18,
           left: "5%",
+          width: "90%",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
         <Text
@@ -35,6 +42,32 @@ export default function Header() {
         >
           Food List
         </Text>
+        <TouchableOpacity
+          style={{
+            position: "relative",
+            // top: 6,
+            backgroundColor: theme.light.primaryColor,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 100,
+            paddingLeft: 12,
+            paddingRight: 12,
+            paddingTop: 2,
+            paddingBottom: 2,
+          }}
+          onPress={goToAddNew}
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: fonts.Poppins_300Light,
+              position: "relative",
+              top: 2,
+            }}
+          >
+            + New
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
